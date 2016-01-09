@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My First HTML5 Canvas</title>
+        <style>
+            canvas{
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -5;
+            }
+            #main-title{
+                color: white;
+                text-align: center;
+                font-size: 4em;
+            
+            }
+            #main-content{
+                background-color: rgba(255,255,255,0.6);
+                max-width: 800px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .quadrant{
+                box-sizing:border-box;
+                width:50%;
+                float:left;
+            }
+            #grid-container::after{
+                clear:both;
+                content:"";
+                display:block;
+                color: antiquewhite;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        <h1 id="main-title">Welcome to Expo DJ</h1>
+        <div class="main-content"><h2>LET’S MAKE A DJ DROP!</h2></div>
+        <br><br><br><br><br><br>
+        
+        <div id="grid-container">
+            <div class="quadrant"><h3>Project 1</h3><br><P><img height="280" width="500" src="http://www.twistslc.com/wp-content/uploads/2015/11/dj.jpg" ></P><br><br><br><br><br></div>
+            <div class="quadrant"><h3>Project 2</h3><br><br><br><br><br><br><br><br><br><br><br><br></div>
+            <div class="quadrant"><h3>Project 2</h3><br><br><br><br><br><br><br><br><br></div>
+            <div class="quadrant"><h3>Project 2</h3><br><br><br><br><br><br><br></div>
+        </div>
+        <script>
+            init();
+            animate();
+            window.onresize = init;
+            
+            
+            function init(){
+                window.WIDTH = window.innerWidth;
+                if (document.body.clientHeight > window.innerHeight)
+                    window.HEIGHT = document.body.clientHeight;
+                else
+                    window.HEIGHT = window.innerHeight;
+                window.ctx = document.getElementById("canvas").getContext("2d");
+                ctx.canvas.width = WIDTH;
+                ctx.canvas.height = HEIGHT;
+                ctx.fillStyle = "#333333";
+                ctx.strokeStyle = "#E0E0E0";
+            }
+              
+                
+                
+                function animate(){
+               
+                ctx.fillRect(0,0,WIDTH,HEIGHT);
+                for(var i=0; i<20; i++){
+                    ctx.strokeRect(Math.random()*WIDTH, Math.random()*HEIGHT, Math.random()*100, Math.random()*100)
+                }
+                window.requestAnimationFrame(animate);
+            }
+            
+        </script>
+    </body>
+
+</html>
